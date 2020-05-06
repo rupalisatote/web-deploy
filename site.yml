@@ -1,0 +1,6 @@
+- name: web-client deploy
+  hosts: dev
+  become: yes
+  become_user: root
+  roles:
+    - web-client

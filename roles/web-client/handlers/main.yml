@@ -1,0 +1,9 @@
+---
+- name: remove build and rar
+  file:
+    path: '{{ item }}'
+    state: absent
+  with_items:
+    - /data/ncf/web/buid
+    - /data/ncf/web/{{ build_file }}
+# handlers file for web-client

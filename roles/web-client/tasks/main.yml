@@ -1,0 +1,25 @@
+---
+#-name: copy new build
+# copy:
+#   src: /home/ubuntu/{{file-name}}
+#   dest: /data/ncf/web
+
+- name: remove files
+  file: 
+    path: /data/ncf/web/static
+    state: absent
+
+- name: extract files
+  unarchive:
+    src: "{{ build_file }}"
+    dest: /data/ncf/web/
+    
+- name: move files from build to /data/ncf/web
+  shell: mv /data/ncf/web/build/* /data/ncf/web
+  notify:
+    - remove build and rar
+ 
+
+
+
+# tasks file for web-client
